@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bouncable" && rb.velocity.y != 0.0f)
+        if (collision.gameObject.tag == "Bouncable")
         {
            rb.AddForce(collision.contacts[0].normal * 750.0f);
         }

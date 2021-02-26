@@ -611,6 +611,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4671353613365918912, guid: f564d5a8426054a3186b900773906c5c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.018290311
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671353613365918912, guid: f564d5a8426054a3186b900773906c5c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.10897446
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671353613365918912, guid: f564d5a8426054a3186b900773906c5c,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.008735659
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671353615250778363, guid: f564d5a8426054a3186b900773906c5c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.021618217
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671353615250778363, guid: f564d5a8426054a3186b900773906c5c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.10023806
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671353615250778363, guid: f564d5a8426054a3186b900773906c5c,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.004367251
+      objectReference: {fileID: 0}
     - target: {fileID: 6071298162465623668, guid: f564d5a8426054a3186b900773906c5c,
         type: 3}
       propertyPath: m_Name
