@@ -13,19 +13,30 @@ public class enemy1 : MonoBehaviour
     [SerializeField]
     float magnitute = 0.5f;
 
-    bool facingRight = true;
+    bool facingRight = false;
 
     Vector3 pos, localScale;
 
     void Start()
     {
+        GetComponent<SpriteRenderer>().flipX = true;
         pos = transform.position;
         localScale = transform.localScale;
+
+        Collider2D[] childrenColliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D col in childrenColliders)
+        {
+            if (col != GetComponent<Collider2D>())
+            {
+                print("Ignoring");
+                Physics2D.IgnoreCollision(col, GetComponent<Collider2D>());
+            }
+        }
     }
 
     void Update()
     {
-        CheckWhereToFace();
+        //CheckWhereToFace();
 
         if (facingRight)
         {
@@ -35,23 +46,6 @@ public class enemy1 : MonoBehaviour
         {
             MoveLeft();
         }
-    }
-
-    void CheckWhereToFace()
-    {
-        if (pos.x < -7f)
-        {
-            facingRight = true;
-        }
-        else if (pos.x > 7f)
-        {
-            facingRight = false;
-        }
-
-        if ((facingRight && localScale.x < 0) || (!facingRight && localScale.x > 0))
-            localScale.x *= -1;
-
-        transform.localScale = localScale;
     }
 
     void MoveRight()
@@ -66,12 +60,16 @@ public class enemy1 : MonoBehaviour
         transform.position = pos + transform.up * Mathf.Sin(Time.time * frequency) * magnitute;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Destroyer")
+        if (facingRight)
         {
-            print("Destroy");
-            Destroy(this.gameObject);
+            facingRight = false;
+            GetComponent<SpriteRenderer>().flipX = true;
+        } else
+        {
+            facingRight = true;
+            GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 
