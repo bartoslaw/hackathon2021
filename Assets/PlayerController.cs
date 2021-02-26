@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     //A == JoystickButtonn1
 
     private KeyCode jumpKeyCode;
+    private KeyCode dieKeyCode;
     private Rigidbody2D rb;
 
     public float acc = 200.0f;
@@ -18,10 +19,13 @@ public class PlayerController : MonoBehaviour
 
     public float jumpForce = 15.0f;
 
+    private int health = 3;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         jumpKeyCode = KeyCode.Joystick1Button1;
+        dieKeyCode = KeyCode.Joystick1Button0;
     }
 
     // Update is called once per frame
@@ -32,12 +36,23 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        if (health == 0)
+        {
+            Destroy(this);
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
 
         if (Input.GetKeyDown(jumpKeyCode))
         {
             //yVelocity += jumpForce;
+            print("Hump");
             rb.AddForce(new Vector2(0.0f, jumpForce), ForceMode2D.Impulse);
+        }
+
+        if (Input.GetKeyDown(dieKeyCode))
+        {
+            health -= 1;
         }
 
         if (horizontal > 0.0f)//going right
@@ -55,6 +70,8 @@ public class PlayerController : MonoBehaviour
         {
             //rb.AddForce(new Vector2(5.0f, 0.0f));
         }
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
