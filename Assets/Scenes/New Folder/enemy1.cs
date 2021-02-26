@@ -66,4 +66,13 @@ public class enemy1 : MonoBehaviour
         transform.position = pos + transform.up * Mathf.Sin(Time.time * frequency) * magnitute;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Destroyer")
+        {
+            print("Destroy");
+            Destroy(this.gameObject);
+        }
+    }
+
 }

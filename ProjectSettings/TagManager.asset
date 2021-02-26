@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Boundary
   - Bouncable
+  - Spawner
+  - Enemy
+  - EnemyTop
+  - Destroyer
   layers:
   - Default
   - TransparentFX

@@ -78,7 +78,14 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bouncable")
         {
-           rb.AddForce(collision.contacts[0].normal * 750.0f);
+            if (collision.gameObject.transform.parent.gameObject.tag == "Enemy")
+            {
+                Destroy(collision.gameObject.transform.parent.gameObject);
+                rb.AddForce(collision.contacts[0].normal * 350.0f);
+            } else
+            {
+                rb.AddForce(collision.contacts[0].normal * 750.0f);
+            }
         }
     }
 }
