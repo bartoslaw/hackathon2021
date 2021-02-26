@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     public float maxSpeed = 30.0f;
 
-    public float jumpForce = 300.0f;
+    public float jumpForce = 15.0f;
 
     void Start()
     {
@@ -59,9 +59,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bouncable")
+        if (collision.gameObject.tag == "Bouncable" && rb.velocity.y != 0.0f)
         {
-           rb.AddForce(collision.contacts[0].normal * 1000.0f);
+           rb.AddForce(collision.contacts[0].normal * 750.0f);
         }
     }
 }
