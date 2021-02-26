@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private int health = 3;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -45,8 +46,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(jumpKeyCode))
         {
-            //yVelocity += jumpForce;
-            print("Hump");
             rb.AddForce(new Vector2(0.0f, jumpForce), ForceMode2D.Impulse);
         }
 
@@ -57,11 +56,15 @@ public class PlayerController : MonoBehaviour
 
         if (horizontal > 0.0f)//going right
         {
+            GetComponent<SpriteRenderer>().flipX = false;
+
             if (Mathf.Abs(rb.velocity.x) < maxSpeed)
                 rb.AddForce(new Vector2(speed, 0.0f));
         }
         else if (horizontal < 0.0f)//going left
         {
+            GetComponent<SpriteRenderer>().flipX = true;
+
             if (Mathf.Abs(rb.velocity.x) < maxSpeed)
                 rb.AddForce(new Vector2(-speed, 0.0f));
         }
@@ -81,7 +84,7 @@ public class PlayerController : MonoBehaviour
             if (collision.gameObject.transform.parent.gameObject.tag == "Enemy")
             {
                 Destroy(collision.gameObject.transform.parent.gameObject);
-                rb.AddForce(collision.contacts[0].normal * 350.0f);
+                rb.AddForce(collision.contacts[0].normal * Random.Range(250.0f, 550.0f));
             } else
             {
                 rb.AddForce(collision.contacts[0].normal * 750.0f);
