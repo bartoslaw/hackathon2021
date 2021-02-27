@@ -157,6 +157,11 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
+        if (!amIAliveState)
+        {
+            return; 
+        }
+
         health -= 1;
 
         Transform cameraPosition = GameObject.FindGameObjectWithTag("MainCamera").transform;
