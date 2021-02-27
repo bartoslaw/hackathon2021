@@ -677,6 +677,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 476856305897816678, guid: 492084a55a7da4cf090223b422e2a4f0,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392148285646125934, guid: 492084a55a7da4cf090223b422e2a4f0,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392148285646125934, guid: 492084a55a7da4cf090223b422e2a4f0,
+        type: 3}
+      propertyPath: BypassReverbZones
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965527582753325269, guid: 492084a55a7da4cf090223b422e2a4f0,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7213812098545388203, guid: 492084a55a7da4cf090223b422e2a4f0,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 492084a55a7da4cf090223b422e2a4f0, type: 3}
 --- !u!1 &1751249028 stripped

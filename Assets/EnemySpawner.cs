@@ -34,7 +34,14 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
 
             spawner.position = new Vector2(spawner.position.x, Random.Range(min, max));
-            Instantiate(enemies[0], spawner.position, Quaternion.identity);
+
+            if (randomNum < 0.5f)
+            {
+                Instantiate(enemies[0], spawner.position, Quaternion.identity);
+            } else
+            {
+                Instantiate(enemies[1], spawner.position, Quaternion.identity);
+            }
         }
         
     }

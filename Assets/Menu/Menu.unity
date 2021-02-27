@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 525114482}
   - component: {fileID: 525114481}
   - component: {fileID: 525114480}
+  - component: {fileID: 525114483}
   m_Layer: 5
   m_Name: new_game_button
   m_TagString: Untagged
@@ -332,7 +333,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 525114481}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &525114481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +382,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525114478}
   m_CullTransparentMesh: 0
+--- !u!114 &525114483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525114478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d22cd99397ef46e5995f1cbe8ae97f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &599301216
 GameObject:
   m_ObjectHideFlags: 0
