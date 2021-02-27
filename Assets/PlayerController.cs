@@ -28,9 +28,10 @@ public class PlayerController : MonoBehaviour
     private int health = 3;
     private int points = 0;
 
+    private bool amIAliveState = true;
     private Vector3 originalPosition;
 
-    private bool didTouchLava = false;
+    private Color originalColor;
 
     void Start()
     {
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
         respawnKeyCode = KeyCode.Joystick1Button2;
         originalPosition = transform.position;
         animator = GetComponent<Animator>();
+        originalColor = GetComponent<SpriteRenderer>().color;
+
 
         AddPoints();
         ChangeHealth();
@@ -56,6 +59,18 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+
+        if (amIAliveState)
+        {
+            GetComponent<SpriteRenderer>().color = originalColor;
+        } else
+        {
+            Color color = originalColor;
+            color.a = 0.5f;
+
+            GetComponent<SpriteRenderer>().color = color;
+        }
+
         if (Input.GetKeyDown(respawnKeyCode))
         {
             health = 4;
@@ -150,6 +165,14 @@ public class PlayerController : MonoBehaviour
         transform.position = originalPosition + cameraPosition.position;
 
         ChangeHealth();
+        amIAliveState = false;
+        StartCoroutine(BringBack());
+    }
+
+    IEnumerator BringBack()
+    {
+        yield return new WaitForSeconds(1.5f);
+        amIAliveState = true;
     }
 
     private void AddPoints()
