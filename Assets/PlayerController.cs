@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private KeyCode jumpKeyCode;
     private KeyCode dieKeyCode;
     private Rigidbody2D rb;
+    private Animator animator;
 
     public float acc = 200.0f;
     public float speed = 15.0f;
@@ -21,12 +22,16 @@ public class PlayerController : MonoBehaviour
 
     private int health = 3;
 
+    private Vector3 originalPosition;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         jumpKeyCode = KeyCode.Joystick1Button1;
         dieKeyCode = KeyCode.Joystick1Button0;
+        originalPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,7 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         if (health == 0)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
 
         float horizontal = Input.GetAxis("Horizontal");
@@ -47,6 +52,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(jumpKeyCode))
         {
             rb.AddForce(new Vector2(0.0f, jumpForce), ForceMode2D.Impulse);
+
+            animator.SetBool("IsClacla", true);
+        } else
+        {
+            animator.SetBool("IsClacla", false);
         }
 
         if (Input.GetKeyDown(dieKeyCode))
@@ -81,13 +91,25 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bouncable")
         {
-            if (collision.gameObject.transform.parent.gameObject.tag == "Enemy")
+            rb.AddForce(collision.contacts[0].normal * 750.0f);
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            float offset = 1.0f;
+
+            if (transform.position.y > collision.gameObject.transform.position.y + offset)
             {
-                Destroy(collision.gameObject.transform.parent.gameObject);
+                Destroy(collision.gameObject);
                 rb.AddForce(collision.contacts[0].normal * Random.Range(250.0f, 550.0f));
-            } else
+            } else if (transform.position.y + offset < collision.gameObject.transform.position.y)
             {
-                rb.AddForce(collision.contacts[0].normal * 750.0f);
+                health -= 1;
+
+                Transform cameraPosition = GameObject.FindGameObjectWithTag("MainCamera").transform;
+
+                rb.velocity = Vector2.zero;
+                transform.position = originalPosition + cameraPosition.position;
             }
         }
     }
