@@ -17,17 +17,30 @@ public class enemy1 : MonoBehaviour
 
     Vector3 pos, localScale;
 
+    AudioSource audioSource;
+
+    float x;
+    float y;
+    float z;
+
+
     void Start()
     {
         moveSpeed = Random.Range(5.0f, 9.0f);
         GetComponent<SpriteRenderer>().flipX = true;
+        print(GetComponent<AudioSource>());
+        audioSource = GetComponent<AudioSource>();
+
         pos = transform.position;
-        localScale = transform.localScale;
+        x = pos.x;
+        y = Random.Range(-5, 4);
+        z = pos.z;
+        pos = new Vector3(x, y, z);
+        transform.position = pos;
     }
 
     void Update()
     {
-        //CheckWhereToFace();
 
         if (facingRight)
         {
@@ -37,6 +50,8 @@ public class enemy1 : MonoBehaviour
         {
             MoveLeft();
         }
+
+
     }
 
     void MoveRight()

@@ -13,7 +13,6 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        spawner = GameObject.FindGameObjectWithTag("Spawner").transform;
         StartCoroutine(SpawnEnemy());
         camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
@@ -26,20 +25,16 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
+        Transform cameraPosition = GameObject.FindGameObjectWithTag("MainCamera").transform;
+
         while (true)
         {
+            spawner = GameObject.FindGameObjectWithTag("Spawner").transform;
             float randomNum = Random.Range(min, max);
             yield return new WaitForSeconds(2.0f);
 
-            if (randomNum < (max/2.0f))
-            {
-                spawner.position = new Vector2(spawner.position.x, Random.Range(min, max));
-                Instantiate(enemies[0], spawner.position, Quaternion.identity);
-            } else
-            {
-                spawner.position = new Vector2(spawner.position.x, Random.Range(min, max));
-                Instantiate(enemies[1], spawner.position, Quaternion.identity);
-            }
+            spawner.position = new Vector2(spawner.position.x, Random.Range(min, max));
+            Instantiate(enemies[0], spawner.position, Quaternion.identity);
         }
         
     }
