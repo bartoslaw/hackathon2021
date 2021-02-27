@@ -7,7 +7,6 @@ public class EnemySpawner : MonoBehaviour
     public Transform[] enemies;
     public Transform spawner;
     public Transform camera;
-
     private float min = 0.0f;
     private float max = 1.0f;
 
@@ -30,9 +29,9 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             float randomNum = Random.Range(min, max);
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(2.0f);
 
-            if (randomNum < (max / 0.5f))
+            if (randomNum < (max/2.0f))
             {
                 spawner.position = new Vector2(spawner.position.x, Random.Range(min, max));
                 Instantiate(enemies[0], spawner.position, Quaternion.identity);

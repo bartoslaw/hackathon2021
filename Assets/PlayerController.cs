@@ -58,8 +58,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Move()
-    {
-
+    { 
         if (amIAliveState)
         {
             GetComponent<SpriteRenderer>().color = originalColor;
@@ -71,13 +70,6 @@ public class PlayerController : MonoBehaviour
             GetComponent<SpriteRenderer>().color = color;
         }
 
-        if (Input.GetKeyDown(respawnKeyCode))
-        {
-            health = 4;
-            ChangeHealth();
-            Die();
-            return;
-        }
 
         if (health <= 0)
         {
@@ -126,6 +118,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!amIAliveState)
+        {
+            return;
+        }
+
         if (collision.gameObject.tag == "Lava")
         {
             Die();
