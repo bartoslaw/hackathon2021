@@ -22,17 +22,10 @@ public class backgroundLoop : MonoBehaviour
     void loadChildObjects(GameObject obj)
     {
         float objectWidth;
-        if (obj.GetComponent<SpriteRenderer>().bounds.size.x < 10){
-            Debug.Log(obj.name);
-            //obj.transform.localScale = new Vector2(1, 1);
-
-
-        }
 
          objectWidth = obj.GetComponent<SpriteRenderer>().bounds.size.x - choke;
         int childsNeeded = (int)Mathf.Ceil(screenBounds.x * 2 / objectWidth);
         GameObject clone = Instantiate(obj) as GameObject;
-        Debug.Log(obj.GetComponent<SpriteRenderer>().size);
 
         for (int i = 0; i <= childsNeeded; i++)
         {
@@ -66,7 +59,6 @@ public class backgroundLoop : MonoBehaviour
     }
     void Update()
     {
-
         Vector3 velocity = Vector3.zero;
         Vector3 desiredPosition = transform.position + new Vector3(scrollSpeed, 0, 0);
         Vector3 smoothPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, 0.3f);
