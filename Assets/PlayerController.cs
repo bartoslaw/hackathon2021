@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private KeyCode jumpKeyCode;
     private KeyCode dieKeyCode;
     private Rigidbody2D rb;
+    private Animator animator;
 
     public float acc = 200.0f;
     public float speed = 15.0f;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
         jumpKeyCode = KeyCode.Joystick1Button1;
         dieKeyCode = KeyCode.Joystick1Button0;
         originalPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -50,6 +52,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(jumpKeyCode))
         {
             rb.AddForce(new Vector2(0.0f, jumpForce), ForceMode2D.Impulse);
+
+            animator.SetBool("IsClacla", true);
+        } else
+        {
+            animator.SetBool("IsClacla", false);
         }
 
         if (Input.GetKeyDown(dieKeyCode))

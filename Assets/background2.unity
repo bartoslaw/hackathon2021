@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5047627694597827588, guid: 0dde183be2537448487911993c49c53b,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: de5d84f3caaf1480f9424c76f0377abf, type: 2}
     - target: {fileID: 6522874100138964227, guid: 0dde183be2537448487911993c49c53b,
         type: 3}
       propertyPath: m_RootOrder
@@ -387,16 +392,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 348216011828351001, guid: 492084a55a7da4cf090223b422e2a4f0,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 348216011828351001, guid: 492084a55a7da4cf090223b422e2a4f0,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 348216011828351001, guid: 492084a55a7da4cf090223b422e2a4f0,
         type: 3}
