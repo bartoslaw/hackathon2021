@@ -89,6 +89,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "Lava")
+        {
+            Die();
+        }
+
         if (collision.gameObject.tag == "Bouncable")
         {
             rb.AddForce(collision.contacts[0].normal * 750.0f);
@@ -102,15 +107,20 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 rb.AddForce(collision.contacts[0].normal * Random.Range(250.0f, 550.0f));
-            } else if (transform.position.y + offset < collision.gameObject.transform.position.y)
+            } else if (transform.position.y < collision.gameObject.transform.position.y + offset / 2.0f)
             {
-                health -= 1;
-
-                Transform cameraPosition = GameObject.FindGameObjectWithTag("MainCamera").transform;
-
-                rb.velocity = Vector2.zero;
-                transform.position = originalPosition + cameraPosition.position;
+                Die();
             }
         }
+    }
+
+    private void Die()
+    {
+        health -= 1;
+
+        Transform cameraPosition = GameObject.FindGameObjectWithTag("MainCamera").transform;
+
+        rb.velocity = Vector2.zero;
+        transform.position = originalPosition + cameraPosition.position;
     }
 }

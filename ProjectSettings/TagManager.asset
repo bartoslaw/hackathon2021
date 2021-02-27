@@ -11,6 +11,7 @@ TagManager:
   - EnemyTop
   - Destroyer
   - Platform
+  - Lava
   layers:
   - Default
   - TransparentFX

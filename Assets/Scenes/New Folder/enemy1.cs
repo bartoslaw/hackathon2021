@@ -19,19 +19,10 @@ public class enemy1 : MonoBehaviour
 
     void Start()
     {
+        moveSpeed = Random.Range(5.0f, 9.0f);
         GetComponent<SpriteRenderer>().flipX = true;
         pos = transform.position;
         localScale = transform.localScale;
-
-        Collider2D[] childrenColliders = GetComponentsInChildren<Collider2D>();
-        foreach (Collider2D col in childrenColliders)
-        {
-            if (col != GetComponent<Collider2D>())
-            {
-                print("Ignoring");
-                Physics2D.IgnoreCollision(col, GetComponent<Collider2D>());
-            }
-        }
     }
 
     void Update()
@@ -62,6 +53,11 @@ public class enemy1 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "Lava")
+        {
+            Destroy(this.gameObject);
+        }
+
         if (facingRight)
         {
             facingRight = false;
@@ -72,5 +68,4 @@ public class enemy1 : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = false;
         }
     }
-
 }
