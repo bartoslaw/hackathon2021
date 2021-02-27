@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 1511510040}
   m_Layer: 0
   m_Name: Platform 1
-  m_TagString: Spawner
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 6071298162465623668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.0118103, y: 4.1133547, z: -2.5803583}
-  m_LocalScale: {x: 52.499996, y: 10, z: 1}
+  m_LocalScale: {x: 21, y: 3, z: 1}
   m_Children:
   - {fileID: 4671353615250778360}
   - {fileID: 4671353613365918913}
@@ -187,7 +187,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.2735849, g: 0.17679779, b: 0.17679779, a: 1}
   m_FlipX: 0
