@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private KeyCode respawnKeyCode;
     private Rigidbody2D rb;
     private Animator animator;
+    private AudioSource[] audioSources;
+
 
     public float acc = 200.0f;
     public float speed = 15.0f;
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     public float jumpForce = 15.0f;
 
-    private int health = 3;
+    private int health = 100;
     private int points = 0;
 
     private bool amIAliveState = true;
@@ -45,7 +47,7 @@ public class PlayerController : MonoBehaviour
         originalPosition = transform.position;
         animator = GetComponent<Animator>();
         originalColor = GetComponent<SpriteRenderer>().color;
-
+        audioSources = GetComponents<AudioSource>();
 
         AddPoints();
         ChangeHealth();
@@ -81,7 +83,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(jumpKeyCode))
         {
             rb.AddForce(new Vector2(0.0f, jumpForce), ForceMode2D.Impulse);
-
+            audioSources[1].Play();
             animator.SetBool("IsClacla", true);
         } else
         {
@@ -125,6 +127,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Lava")
         {
+            audioSources[2].Play();
             Die();
         }
 
@@ -143,10 +146,12 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(collision.contacts[0].normal * Random.Range(450.0f, 650.0f));
 
                 points += 500;
-
+                audioSources[0].Play();
+                    
                 AddPoints();
             } else if (transform.position.y < collision.gameObject.transform.position.y + offset / 2.0f)
             {
+                audioSources[3].Play();
                 Die();
             }
         }
