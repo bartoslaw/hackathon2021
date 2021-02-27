@@ -17,12 +17,16 @@ public class enemy1 : MonoBehaviour
 
     Vector3 pos, localScale;
 
+    AudioSource audioSource;
+
     void Start()
     {
         moveSpeed = Random.Range(5.0f, 9.0f);
         GetComponent<SpriteRenderer>().flipX = true;
-        pos = transform.position;
-        localScale = transform.localScale;
+        print(GetComponent<AudioSource>());
+        audioSource = GetComponent<AudioSource>();
+
+        transform.position = GameObject.FindGameObjectWithTag("Spawner").transform.position;
     }
 
     void Update()
@@ -37,6 +41,8 @@ public class enemy1 : MonoBehaviour
         {
             MoveLeft();
         }
+
+
     }
 
     void MoveRight()

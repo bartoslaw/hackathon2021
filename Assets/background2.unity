@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4599710018876174129, guid: 0dde183be2537448487911993c49c53b,
+        type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5047627694597827588, guid: 0dde183be2537448487911993c49c53b,
         type: 3}
       propertyPath: m_Material
@@ -543,6 +548,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129649206}
   m_CullTransparentMesh: 0
+--- !u!1 &1462496871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1147178998940994309, guid: 1c970fe7fa7e946ad99f12481c2398b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1147178998753323447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1462496872
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462496871}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 0df83e8524ff54548ab3b7a1ee0feb50, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.57, y: 2.56}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!4 &1463945342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1147179000141504969, guid: 1c970fe7fa7e946ad99f12481c2398b8,
@@ -868,7 +929,7 @@ PrefabInstance:
     - target: {fileID: 1147178998940994308, guid: 1c970fe7fa7e946ad99f12481c2398b8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.37
+      value: 5.79
       objectReference: {fileID: 0}
     - target: {fileID: 1147179000141504969, guid: 1c970fe7fa7e946ad99f12481c2398b8,
         type: 3}
@@ -929,6 +990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: near clip plane
       value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147179000141504971, guid: 1c970fe7fa7e946ad99f12481c2398b8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1147179000141504972, guid: 1c970fe7fa7e946ad99f12481c2398b8,
         type: 3}
@@ -1109,6 +1175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655113515173412129, guid: 2ebf8c870b82c4a81bbdd22f01874745,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 12.519063
       objectReference: {fileID: 0}
     - target: {fileID: 8655113515173412129, guid: 2ebf8c870b82c4a81bbdd22f01874745,
         type: 3}
