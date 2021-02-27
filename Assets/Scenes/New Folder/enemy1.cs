@@ -19,6 +19,11 @@ public class enemy1 : MonoBehaviour
 
     AudioSource audioSource;
 
+    float x;
+    float y;
+    float z;
+
+
     void Start()
     {
         moveSpeed = Random.Range(5.0f, 9.0f);
@@ -26,12 +31,16 @@ public class enemy1 : MonoBehaviour
         print(GetComponent<AudioSource>());
         audioSource = GetComponent<AudioSource>();
 
-        transform.position = GameObject.FindGameObjectWithTag("Spawner").transform.position;
+        pos = transform.position;
+        x = pos.x;
+        y = Random.Range(-5, 4);
+        z = pos.z;
+        pos = new Vector3(x, y, z);
+        transform.position = pos;
     }
 
     void Update()
     {
-        //CheckWhereToFace();
 
         if (facingRight)
         {
