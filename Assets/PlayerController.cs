@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,8 +9,12 @@ public class PlayerController : MonoBehaviour
     //X == JoystickButtoon0
     //A == JoystickButtonn1
 
+    private Text healthLabel;
+    private Text pointsLabel;
+
     private KeyCode jumpKeyCode;
     private KeyCode dieKeyCode;
+    private KeyCode respawnKeyCode;
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -21,17 +26,25 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 15.0f;
 
     private int health = 3;
+    private int points = 0;
 
     private Vector3 originalPosition;
 
 
     void Start()
     {
+        pointsLabel = GameObject.FindGameObjectWithTag("PointsLabel").GetComponent<Text>();
+        healthLabel = GameObject.FindGameObjectWithTag("HealthLabel").GetComponent<Text>();
+
         rb = GetComponent<Rigidbody2D>();
         jumpKeyCode = KeyCode.Joystick1Button1;
         dieKeyCode = KeyCode.Joystick1Button0;
+        respawnKeyCode = KeyCode.Joystick1Button2;
         originalPosition = transform.position;
         animator = GetComponent<Animator>();
+
+        AddPoints();
+        ChangeHealth();
     }
 
     // Update is called once per frame
@@ -42,6 +55,14 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        if (Input.GetKeyDown(respawnKeyCode) && health == 0)
+        {
+            health = 4;
+            ChangeHealth();
+            Die();
+            return;
+        }
+
         if (health == 0)
         {
             Destroy(this.gameObject);
@@ -92,6 +113,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Lava")
         {
             Die();
+            return;
         }
 
         if (collision.gameObject.tag == "Bouncable")
@@ -107,6 +129,10 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 rb.AddForce(collision.contacts[0].normal * Random.Range(250.0f, 550.0f));
+
+                points += 500;
+
+                AddPoints();
             } else if (transform.position.y < collision.gameObject.transform.position.y + offset / 2.0f)
             {
                 Die();
@@ -122,5 +148,17 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = Vector2.zero;
         transform.position = originalPosition + cameraPosition.position;
+
+        ChangeHealth();
+    }
+
+    private void AddPoints()
+    {
+        pointsLabel.text = "Points: " + points;
+    }
+
+    private void ChangeHealth()
+    {
+        healthLabel.text = "Health: " + health;
     }
 }

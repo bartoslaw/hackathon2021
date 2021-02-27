@@ -12,6 +12,8 @@ TagManager:
   - Destroyer
   - Platform
   - Lava
+  - HealthLabel
+  - PointsLabel
   layers:
   - Default
   - TransparentFX
