@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
             if (transform.position.y > collision.gameObject.transform.position.y + offset)
             {
                 Destroy(collision.gameObject);
-                rb.AddForce(collision.contacts[0].normal * Random.Range(250.0f, 550.0f));
+                rb.AddForce(collision.contacts[0].normal * Random.Range(450.0f, 650.0f));
 
                 points += 500;
 
@@ -159,6 +159,6 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeHealth()
     {
-        healthLabel.text = "Health: " + health;
+        healthLabel.text = "Health: " + Mathf.Max(health, 0);
     }
 }
