@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 originalPosition;
 
+    private bool didTouchLava = false;
 
     void Start()
     {
@@ -55,15 +56,15 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        if (Input.GetKeyDown(respawnKeyCode) && health == 0)
-        {
-            health = 4;
-            ChangeHealth();
-            Die();
-            return;
-        }
+        //if (Input.GetKeyDown(respawnKeyCode) && health == 0)
+        //{
+        //    health = 4;
+        //    ChangeHealth();
+        //    Die();
+        //    return;
+        //}
 
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -113,7 +114,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Lava")
         {
             Die();
-            return;
         }
 
         if (collision.gameObject.tag == "Bouncable")
