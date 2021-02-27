@@ -56,13 +56,13 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        //if (Input.GetKeyDown(respawnKeyCode) && health == 0)
-        //{
-        //    health = 4;
-        //    ChangeHealth();
-        //    Die();
-        //    return;
-        //}
+        if (Input.GetKeyDown(respawnKeyCode))
+        {
+            health = 4;
+            ChangeHealth();
+            Die();
+            return;
+        }
 
         if (health <= 0)
         {

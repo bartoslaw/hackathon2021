@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
             float randomNum = Random.Range(min, max);
             yield return new WaitForSeconds(2.5f);
 
-            if (randomNum < (max / 0.65f))
+            if (randomNum < (max / 0.5f))
             {
                 spawner.position = new Vector2(spawner.position.x, Random.Range(min, max));
                 Instantiate(enemies[0], spawner.position, Quaternion.identity);
