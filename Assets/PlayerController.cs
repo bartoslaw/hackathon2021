@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 rb.AddForce(collision.contacts[0].normal * Random.Range(250.0f, 550.0f));
-            } else if (transform.position.y + offset < collision.gameObject.transform.position.y)
+            } else if (transform.position.y < collision.gameObject.transform.position.y + offset / 2.0f)
             {
                 health -= 1;
 

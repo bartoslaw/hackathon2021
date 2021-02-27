@@ -19,6 +19,7 @@ public class enemy1 : MonoBehaviour
 
     void Start()
     {
+        moveSpeed = Random.Range(5.0f, 9.0f);
         GetComponent<SpriteRenderer>().flipX = true;
         pos = transform.position;
         localScale = transform.localScale;

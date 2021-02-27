@@ -25,7 +25,10 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(3.0f, 8.0f));
             for (int i = 0; i < enemies.Length; ++i)
+            {
+                spawner.position = new Vector2(spawner.position.x, Random.Range(-5, 4));
                 Instantiate(enemies[i], spawner.position, Quaternion.identity);
+            }
         }
         
     }
